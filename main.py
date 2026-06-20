@@ -75,12 +75,8 @@ if __name__ == "__main__":
     parser.add_argument("video", help="Path to input video file")
     parser.add_argument("--language", default="Russian", help="Target language for translation (default: Russian)")
     parser.add_argument("--thinking-budget", type=int, default=500, help="Thinking budget tokens for llama.cpp")
-    parser.add_argument("--verbose", action="store_true", help="Enable verbose debug logging")
     args = parser.parse_args()
     
-    if args.verbose:
-        logging.basicConfig(level=logging.DEBUG, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
-    else:
-        logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s]: %(message)s")
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
         
     process_video(args.video, args.language, args.thinking_budget)

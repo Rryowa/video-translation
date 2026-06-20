@@ -38,11 +38,10 @@ uv run main.py path/to/video.mp4
 ### Options
 - `--language`: Target language for translation (default: `Russian`).
 - `--thinking-budget`: Number of reasoning tokens allocated (default: `500`).
-- `--verbose`: Enable verbose debug logging.
 
 Example:
 ```bash
-python main.py my_video.mp4 --language Spanish --thinking-budget 800
+uv run main.py my_video.mp4 --language Spanish --thinking-budget 800
 ```
 
 ## Local Translation Setup
