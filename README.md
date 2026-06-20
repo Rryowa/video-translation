@@ -32,12 +32,13 @@ Automatically extract audio, transcribe with word-level alignment, translate to 
 Run the main script with the path to your input video (automatically translates subtitles):
 
 ```bash
-python main.py path/to/video.mp4
+uv run main.py path/to/video.mp4
 ```
 
 ### Options
 - `--language`: Target language for translation (default: `Russian`).
 - `--thinking-budget`: Number of reasoning tokens allocated (default: `500`).
+- `--verbose`: Enable verbose debug logging.
 
 Example:
 ```bash
