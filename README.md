@@ -21,31 +21,12 @@ Automatically extract audio, transcribe with word-level alignment, translate to 
    ```bash
    cd video-translation
    ```
-2. Create and activate a virtual environment (using `uv`):
+2. Install dependencies:
    ```bash
-   # Create virtual environment:
    uv venv
-
-   # Activate virtual environment:
-   # On Windows (PowerShell):
-   .venv\Scripts\Activate.ps1
-   # On Windows (cmd):
-   .venv\Scripts\activate.bat
-   # On Linux/macOS:
-   source .venv/bin/activate
-   ```
-3. Install dependencies:
-   ```bash
    uv pip install -r requirements.txt
    ```
 
-## Local Translation Setup
-To translate subtitles to Russian, start your local LLM (e.g. llama.cpp) supporting OpenAI API compatibility on `http://127.0.0.1:11434/v1`:
-
-```bash
-# Example running llama-server
-llama-server -m Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q8_0.gguf --port 11434
-```
 
 ## Usage
 Run the main script with the path to your input video (automatically translates subtitles):
@@ -61,6 +42,14 @@ python main.py path/to/video.mp4
 Example:
 ```bash
 python main.py my_video.mp4 --language Spanish --thinking-budget 800
+```
+
+## Local Translation Setup
+To translate subtitles to Russian, start your local LLM (e.g. llama.cpp) supporting OpenAI API compatibility on `http://127.0.0.1:11434/v1`:
+
+```bash
+# Example running llama-server
+llama-server -m Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q8_0.gguf --port 11434
 ```
 
 ## Project Structure
