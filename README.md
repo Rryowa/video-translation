@@ -21,9 +21,23 @@ Automatically extract audio, transcribe with word-level alignment, translate to 
    ```bash
    cd video-translation
    ```
-2. Install Python dependencies:
+2. Create and activate a virtual environment:
    ```bash
+   python -m venv .venv
+   # On Windows (PowerShell):
+   .venv\Scripts\Activate.ps1
+   # On Windows (cmd):
+   .venv\Scripts\activate.bat
+   # On Linux/macOS:
+   source .venv/bin/activate
+   ```
+3. Install dependencies (using standard `pip` or ultra-fast `uv`):
+   ```bash
+   # Using standard pip:
    pip install -r requirements.txt
+   
+   # Or using uv:
+   uv pip install -r requirements.txt
    ```
 
 ## Local Translation Setup
