@@ -1,0 +1,5 @@
+torch
+transformers
+qwen-asr
+ffmpeg-python
+pytest
