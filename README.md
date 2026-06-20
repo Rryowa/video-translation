@@ -13,6 +13,8 @@ Automatically extract audio, transcribe with word-level alignment, translate to 
 - Python 3.10+
 - FFmpeg installed and available in system PATH
 - CUDA-compatible GPU (strongly recommended for ASR models)
+  - **Important:** Ensure PyTorch is installed with CUDA support (compatible with CUDA 12 and 13+). CPU-only PyTorch will run out of system RAM.
+  - Run: `pip install torch --index-url https://download.pytorch.org/whl/cu124 --force-reinstall`
 
 ## Installation
 1. Navigate to the project directory:

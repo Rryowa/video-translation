@@ -1,10 +1,20 @@
 import argparse
 import os
+import torch
 from src.audio_extractor import extract_audio
 from src.transcriber import transcribe_audio, free_model
 from src.srt_generator import group_alignments, generate_srt
 from src.video_burner import burn_subtitles
 from src.translator import translate_segments
+
+# Check for CUDA availability
+if not torch.cuda.is_available():
+    print("\n" + "="*80)
+    print("WARNING: CUDA is not available to PyTorch. The models will run on CPU,")
+    print("which is extremely slow and will consume a massive amount of system RAM (up to 32GB).")
+    print("To install PyTorch with CUDA support (compatible with CUDA 12 and 13+):")
+    print("  pip install torch --index-url https://download.pytorch.org/whl/cu124 --force-reinstall")
+    print("="*80 + "\n")
 
 def process_video(video_path: str, language: str = "Russian", thinking_budget: int = 500):
     base_name = os.path.splitext(video_path)[0]
