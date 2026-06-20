@@ -9,7 +9,10 @@ def get_model():
     global model
     if model is None:
         device = "cuda:0" if torch.cuda.is_available() else "cpu"
-        dtype = torch.bfloat16 if torch.cuda.is_available() else torch.float32
+        if torch.cuda.is_available():
+            dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+        else:
+            dtype = torch.float32
         
         logger.debug(f"Loading Qwen3-ASR model on {device} with dtype {dtype}...")
         # Load the model with forced aligner

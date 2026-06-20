@@ -19,7 +19,7 @@ def burn_subtitles(video_path: str, srt_path: str, output_video_path: str):
     (
         ffmpeg
         .input(video_path)
-        .output(output_video_path, vf=f"subtitles='{escaped_srt}'")
+        .output(output_video_path, vf=f"subtitles='{escaped_srt}'", vcodec='h264_nvenc', acodec='copy')
         .overwrite_output()
         .run(quiet=True)
     )

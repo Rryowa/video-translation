@@ -31,7 +31,7 @@ def join_words(items) -> str:
         text += txt
     return text
 
-def group_alignments(items, max_words=8, max_chars=30, max_gap=0.8):
+def group_alignments(items, max_words=8, max_chars=30, max_gap=0.8, end_padding=0.0):
     segments = []
     current_segment = []
     
@@ -63,6 +63,18 @@ def group_alignments(items, max_words=8, max_chars=30, max_gap=0.8):
             "end": current_segment[-1].end_time,
             "text": join_words(current_segment)
         })
+        
+    # Apply end padding to give the viewer extra time to read the subtitles
+    if end_padding > 0:
+        for i in range(len(segments)):
+            current_end = segments[i]["end"]
+            padded_end = current_end + end_padding
+            if i < len(segments) - 1:
+                next_start = segments[i+1]["start"]
+                # Keep a tiny 0.1s gap before the next segment starts
+                segments[i]["end"] = min(padded_end, next_start - 0.1)
+            else:
+                segments[i]["end"] = padded_end
         
     return segments
 
