@@ -27,3 +27,14 @@ def transcribe_audio(audio_path: str):
     # return_time_stamps=True gets ForcedAlignResult in time_stamps
     results = m.transcribe(audio_path, return_time_stamps=True)
     return results[0]
+
+def free_model():
+    global model
+    if model is not None:
+        del model
+        model = None
+    import gc
+    import torch
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
