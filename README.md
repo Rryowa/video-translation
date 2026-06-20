@@ -33,18 +33,19 @@ llama-server -m Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q8_0.gguf --port 11434
 ```
 
 ## Usage
-Run the main script with the path to your input video (subtitles are automatically translated to Russian):
+Run the main script with the path to your input video (automatically translates subtitles):
 
 ```bash
 python main.py path/to/video.mp4
 ```
 
 ### Options
+- `--language`: Target language for translation (default: `Russian`).
 - `--thinking-budget`: Number of reasoning tokens allocated (default: `500`).
 
 Example:
 ```bash
-python main.py my_video.mp4 --thinking-budget 800
+python main.py my_video.mp4 --language Spanish --thinking-budget 800
 ```
 
 ## Project Structure
